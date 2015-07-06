@@ -62,14 +62,14 @@ namespace MonoGame.Tools {
         public Particle(Texture2D texture, Vector2 position, Vector2 velocity,
             float angle, float angularVelocity, Color color, float size,
             int lifeSpan) {
-                Texture = texture;
-                Position = position;
-                Velocity = velocity;
-                Angle = angle;
-                AngularVelocity = angularVelocity;
-                Color = color;
-                Size = size;
-                LifeSpan = lifeSpan;
+            Texture = texture;
+            Position = position;
+            Velocity = velocity;
+            Angle = angle;
+            AngularVelocity = angularVelocity;
+            Color = color;
+            Size = size;
+            LifeSpan = lifeSpan;
         }
 
         /// <summary>

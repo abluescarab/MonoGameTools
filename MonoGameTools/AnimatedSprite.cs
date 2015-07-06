@@ -22,7 +22,7 @@ namespace MonoGame.Tools {
         /// The texture file column count.
         /// </summary>
         public int Columns { get; set; }
-        
+
         private int currentFrame;
         private int totalFrames;
 

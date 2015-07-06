@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MonoGame.Tools.Effects {
     public class FlashEffect : ImageEffect {
         private float lastRun = 0.0f;
-        
+
         /// <summary>
         /// The speed at which the image flashes, in seconds.
         /// </summary>
@@ -26,7 +26,8 @@ namespace MonoGame.Tools.Effects {
         /// <summary>
         /// Create the FlashEffect.
         /// </summary>
-        public FlashEffect() : base() {
+        public FlashEffect()
+            : base() {
             Speed = 1.0f;
             MaximumAlpha = 1.0f;
             MinimumAlpha = 0.0f;
@@ -40,31 +41,32 @@ namespace MonoGame.Tools.Effects {
         /// <param name="maximumAlpha">The image's maximum alpha</param>
         /// <param name="repeat">Whether to repeat the effect after it ends</param>
         public FlashEffect(float speed = 1.0f, float minimumAlpha = 0.0f,
-            float maximumAlpha = 1.0f, bool repeat = false) : base(repeat) {
-                Speed = speed;
-                MinimumAlpha = minimumAlpha;
-                MaximumAlpha = maximumAlpha;
+            float maximumAlpha = 1.0f, bool repeat = false)
+            : base(repeat) {
+            Speed = speed;
+            MinimumAlpha = minimumAlpha;
+            MaximumAlpha = maximumAlpha;
         }
-        
+
         /// <summary>
         /// Run the effect.
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
         protected override void DoEffect(GameTime gameTime) {
             lastRun += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
-            if(MaximumAlpha > MinimumAlpha) {
-                    float max = Math.Min(MaximumAlpha, 1.0f);
-                    float min = Math.Max(MinimumAlpha, 0.0f);
-                    
-                    if(lastRun >= Speed) {
-                        image.Alpha = FlipValue(image.Alpha, min, max);
-                        lastRun = 0.0f;
 
-                        if(!Repeat) {
-                            Deactivate();
-                        }
+            if(MaximumAlpha > MinimumAlpha) {
+                float max = Math.Min(MaximumAlpha, 1.0f);
+                float min = Math.Max(MinimumAlpha, 0.0f);
+
+                if(lastRun >= Speed) {
+                    image.Alpha = FlipValue(image.Alpha, min, max);
+                    lastRun = 0.0f;
+
+                    if(!Repeat) {
+                        Deactivate();
                     }
+                }
             }
         }
 

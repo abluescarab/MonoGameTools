@@ -25,7 +25,8 @@ namespace MonoGame.Tools.Effects {
         /// <summary>
         /// Create the FadeEffect.
         /// </summary>
-        public FadeEffect() : base() {
+        public FadeEffect()
+            : base() {
             Speed = 1.0f;
             FadeIn = false;
         }
@@ -37,10 +38,11 @@ namespace MonoGame.Tools.Effects {
         /// <param name="fadeIn">Whether to fade the image in rather than out</param>
         /// <param name="repeat">Whether to repeat the effect after it ends</param>
         public FadeEffect(float speed = 1.0f, bool fadeIn = false,
-            bool repeat = false) : base(repeat) {
-                Speed = speed;
-                FadeIn = fadeIn;
-                Repeat = repeat;
+            bool repeat = false)
+            : base(repeat) {
+            Speed = speed;
+            FadeIn = fadeIn;
+            Repeat = repeat;
         }
 
         /// <summary>

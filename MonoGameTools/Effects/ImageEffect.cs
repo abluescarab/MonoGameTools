@@ -21,7 +21,7 @@ namespace MonoGame.Tools.Effects {
         /// Whether to repeat the effect after it ends.
         /// </summary>
         public bool Repeat { get; set; }
-        
+
         protected Image image;
 
         /// <summary>

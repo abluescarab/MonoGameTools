@@ -74,7 +74,7 @@ namespace MonoGame.Tools {
         /// The amount to spread the particles per update.
         /// </summary>
         public float ParticleSpread { get; set; }
-        
+
         private Random rand;
         private List<Particle> particles;
 
@@ -104,29 +104,29 @@ namespace MonoGame.Tools {
             bool randomizeLifeSpan = false, int randomMaximumLifeSpan = 60,
             float particleAngle = 0f, float particleAngularVelocity = .1f,
             float particleSpread = 1f) {
-                Location = location;
-                MaximumParticles = maximumParticles;
-                Textures = textures;
+            Location = location;
+            MaximumParticles = maximumParticles;
+            Textures = textures;
 
-                ParticleColor = particleColor;
-                RandomizeColor = randomizeColor;
-                RandomColorThreshold = randomColorThreshold;
+            ParticleColor = particleColor;
+            RandomizeColor = randomizeColor;
+            RandomColorThreshold = randomColorThreshold;
 
-                ParticleSize = particleSize;
-                RandomizeSize = randomizeSize;
-                RandomMaximumSize = randomMaximumSize;
+            ParticleSize = particleSize;
+            RandomizeSize = randomizeSize;
+            RandomMaximumSize = randomMaximumSize;
 
-                ParticleLifeSpan = particleLifeSpan;
-                RandomizeLifeSpan = randomizeLifeSpan;
-                RandomMaximumLifeSpan = randomMaximumLifeSpan;
+            ParticleLifeSpan = particleLifeSpan;
+            RandomizeLifeSpan = randomizeLifeSpan;
+            RandomMaximumLifeSpan = randomMaximumLifeSpan;
 
-                ParticleAngle = particleAngle;
-                ParticleAngularVelocity = particleAngularVelocity;
+            ParticleAngle = particleAngle;
+            ParticleAngularVelocity = particleAngularVelocity;
 
-                ParticleSpread = particleSpread;
-                
-                rand = new Random();
-                particles = new List<Particle>();
+            ParticleSpread = particleSpread;
+
+            rand = new Random();
+            particles = new List<Particle>();
         }
 
         /// <summary>
@@ -190,12 +190,18 @@ namespace MonoGame.Tools {
                 int G = rand.Next(color.G - colorThreshold, color.G + colorThreshold);
                 int B = rand.Next(color.B - colorThreshold, color.B + colorThreshold);
 
-                if(R >= 255)    R = 255;
-                else if(R <= 0) R = 0;
-                if(G >= 255)    G = 255;
-                else if(G <= 0) G = 0;
-                if(B >= 255)    B = 255;
-                else if(B <= 0) B = 0;
+                if(R >= 255)
+                    R = 255;
+                else if(R <= 0)
+                    R = 0;
+                if(G >= 255)
+                    G = 255;
+                else if(G <= 0)
+                    G = 0;
+                if(B >= 255)
+                    B = 255;
+                else if(B <= 0)
+                    B = 0;
 
                 color = new Color(R, G, B);
             }
