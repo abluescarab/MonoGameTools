@@ -178,6 +178,10 @@ namespace MonoGame.Tools {
         /// Unload the image content from the ContentManager.
         /// </summary>
         public void UnloadContent() {
+            foreach(string effectName in effects.Keys) {
+                DeactivateEffect(effectName);
+            }
+
             if(content != null) {
                 content.Unload();
             }
