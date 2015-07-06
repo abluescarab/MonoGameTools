@@ -41,14 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
-    <Compile Include="Effects\FadeEffect.cs" />
-    <Compile Include="Effects\FlashEffect.cs" />
-    <Compile Include="Effects\ZoomEffect.cs" />
+    <Compile Include="ImageEffects\FadeEffect.cs" />
+    <Compile Include="ImageEffects\FlashEffect.cs" />
+    <Compile Include="ImageEffects\ZoomEffect.cs" />
     <Compile Include="Image.cs" />
-    <Compile Include="Effects\ImageEffect.cs" />
+    <Compile Include="ImageEffects\ImageEffect.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ScreenEffects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,14 +11,14 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Tools.Effects;
+using MonoGame.Tools.ImageEffects;
 
 namespace MonoGame.Tools {
     public class Image {
         private Vector2 origin;
         private Rectangle sourceRectangle;
         private ContentManager content;
-        private Dictionary<string, Effects.ImageEffect> effects;
+        private Dictionary<string, ImageEffect> effects;
 
         /// <summary>
         /// The image path.
@@ -60,7 +60,7 @@ namespace MonoGame.Tools {
             origin = Vector2.Zero;
             sourceRectangle = Rectangle.Empty;
             content = null;
-            effects = new Dictionary<string, Effects.ImageEffect>();
+            effects = new Dictionary<string, ImageEffect>();
 
             Path = string.Empty;
             Position = Vector2.Zero;
@@ -86,7 +86,7 @@ namespace MonoGame.Tools {
             origin = Vector2.Zero;
             sourceRectangle = Rectangle.Empty;
             content = null;
-            effects = new Dictionary<string, Effects.ImageEffect>();
+            effects = new Dictionary<string, ImageEffect>();
 
             Path = path;
             Position = position;
@@ -103,16 +103,16 @@ namespace MonoGame.Tools {
         /// <typeparam name="T">An ImageEffect child class</typeparam>
         /// <param name="effectName">The effect name</param>
         /// <param name="effect">The effect</param>
-        public void AddEffect<T>(string effectName, T effect) {
+        public void AddEffect<T>(string effectName, T effect) where T : ImageEffect {
             if(effect == null) {
                 effect = (T)Activator.CreateInstance(typeof(T));
             }
             else {
-                (effect as Effects.ImageEffect).IsActive = false;
-                (effect as Effects.ImageEffect).LoadContent(this);
+                (effect as ImageEffect).IsActive = false;
+                (effect as ImageEffect).LoadContent(this);
             }
 
-            effects.Add(effectName, effect as Effects.ImageEffect);
+            effects.Add(effectName, effect as ImageEffect);
         }
 
         /// <summary>
