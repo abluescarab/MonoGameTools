@@ -4,7 +4,9 @@ MonoGameTools is a library to add some useful classes to the MonoGame framework.
 ## Added Classes
 
 **AnimatedSprite.cs:** A class that can be used for sprite sheets.
+
 **Particle.cs**: A class that can be used for particles and particle systems.
+
 **ParticleEngine.cs**: A class that implements a particle engine that includes options for randomized particles.
 
 ## How to Use
