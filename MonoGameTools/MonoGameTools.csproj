@@ -37,9 +37,14 @@
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
+    <Compile Include="Effects\FadeEffect.cs" />
+    <Compile Include="Effects\FlashEffect.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="Effects\ImageEffect.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
