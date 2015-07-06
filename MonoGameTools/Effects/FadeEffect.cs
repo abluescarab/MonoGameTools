@@ -55,12 +55,17 @@ namespace MonoGame.Tools.Effects {
                 image.Alpha += Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if(Repeat) {
-                if(image.Alpha < 0.0f && !FadeIn) {
-                    image.Alpha = 1.0f;
+            if(image.Alpha < 0.0f || image.Alpha > 1.0f) {
+                if(Repeat) {
+                    if(image.Alpha < 0.0f && !FadeIn) {
+                        image.Alpha = 1.0f;
+                    }
+                    else if(image.Alpha > 1.0f && FadeIn) {
+                        image.Alpha = 0.0f;
+                    }
                 }
-                else if(image.Alpha > 1.0f && FadeIn) {
-                    image.Alpha = 0.0f;
+                else {
+                    Deactivate();
                 }
             }
         }

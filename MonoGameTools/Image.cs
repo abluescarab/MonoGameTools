@@ -132,8 +132,7 @@ namespace MonoGame.Tools {
         /// <param name="effectName">The effect name</param>
         public void ActivateEffect(string effectName) {
             if(effects.ContainsKey(effectName)) {
-                effects[effectName].IsActive = true;
-                effects[effectName].LoadContent(this);
+                effects[effectName].Activate(this);
             }
         }
 
@@ -143,8 +142,7 @@ namespace MonoGame.Tools {
         /// <param name="effectName">The effect name</param>
         public void DeactivateEffect(string effectName) {
             if(effects.ContainsKey(effectName)) {
-                effects[effectName].IsActive = false;
-                effects[effectName].UnloadContent();
+                effects[effectName].Deactivate();
             }
         }
 
@@ -178,8 +176,8 @@ namespace MonoGame.Tools {
         /// Unload the image content from the ContentManager.
         /// </summary>
         public void UnloadContent() {
-            foreach(string effectName in effects.Keys) {
-                DeactivateEffect(effectName);
+            foreach(ImageEffect effect in effects.Values) {
+                effect.Deactivate();
             }
 
             if(content != null) {

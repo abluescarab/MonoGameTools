@@ -52,8 +52,23 @@ namespace MonoGame.Tools.Effects {
         /// <summary>
         /// Unload the ImageEffect content.
         /// </summary>
-        public virtual void UnloadContent() {
-            image.UnloadContent();
+        public virtual void UnloadContent() { }
+
+        /// <summary>
+        /// Activate the effect.
+        /// </summary>
+        /// <param name="image">The image to attach the effect to</param>
+        public virtual void Activate(Image image) {
+            this.IsActive = true;
+            LoadContent(image);
+        }
+
+        /// <summary>
+        /// Deactivate the effect.
+        /// </summary>
+        public virtual void Deactivate() {
+            this.IsActive = false;
+            UnloadContent();
         }
 
         /// <summary>
@@ -61,7 +76,7 @@ namespace MonoGame.Tools.Effects {
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
         public virtual void Update(GameTime gameTime) {
-            if(image.Visible) {
+            if(this.IsActive && image.Visible) {
                 DoEffect(gameTime);
             }
         }

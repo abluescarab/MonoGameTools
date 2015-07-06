@@ -57,10 +57,14 @@ namespace MonoGame.Tools.Effects {
                 !float.Equals(MinimumAlpha, MaximumAlpha)) {
                     float max = Math.Min(MaximumAlpha, 1.0f);
                     float min = Math.Max(MinimumAlpha, 0.0f);
-
+                    
                     if(lastRun >= Speed) {
                         image.Alpha = FlipValue(image.Alpha, min, max);
                         lastRun = 0.0f;
+
+                        if(!Repeat) {
+                            Deactivate();
+                        }
                     }
             }
         }

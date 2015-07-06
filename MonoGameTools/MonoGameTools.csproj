@@ -43,6 +43,7 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Effects\FadeEffect.cs" />
     <Compile Include="Effects\FlashEffect.cs" />
+    <Compile Include="Effects\ZoomEffect.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Effects\ImageEffect.cs" />
     <Compile Include="Particle.cs" />
