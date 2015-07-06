@@ -18,7 +18,7 @@ MonoGameTools is a library to add some useful classes to the MonoGame framework.
 **Effects/FlashEffect.cs:** An ImageEffect child class that can create a flashing effect on images.
 
 ## How to Use
-Include the MonoGameTools DLL in your project references. Add `using MonoGame.Tools` to the top of each file where you need the added classes, or access each class by calling its full name.
+Include the MonoGameTools DLL in your project references. Add `using MonoGame.Tools` or `using MonoGame.Tools.Effects` to the top of each file where you need the added classes, or access each class by calling its full name.
 
 ## Credits
-Some class are based on the wonderful [XNA Tutorials](http://rbwhitaker.wikidot.com/xna-tutorials) by RB Whitaker and the [MonoGame RPG Made Easy](https://www.youtube.com/playlist?list=PLHJE4y54mpC5hrlDv8yFHPfrSNhqFoA0h) series by CodingMadeEasy.
+Some classes are based on the wonderful [XNA Tutorials](http://rbwhitaker.wikidot.com/xna-tutorials) by RB Whitaker and the [MonoGame RPG Made Easy](https://www.youtube.com/playlist?list=PLHJE4y54mpC5hrlDv8yFHPfrSNhqFoA0h) series by CodingMadeEasy.
