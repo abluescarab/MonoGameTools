@@ -53,8 +53,7 @@ namespace MonoGame.Tools.Effects {
         protected override void DoEffect(GameTime gameTime) {
             lastRun += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            if(MaximumAlpha > MinimumAlpha &&
-                !float.Equals(MinimumAlpha, MaximumAlpha)) {
+            if(MaximumAlpha > MinimumAlpha) {
                     float max = Math.Min(MaximumAlpha, 1.0f);
                     float min = Math.Max(MinimumAlpha, 0.0f);
                     
