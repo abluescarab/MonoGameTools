@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools.Effects {
+namespace MonoGame.Tools.ImageEffects {
     public class FadeEffect : ImageEffect {
         /// <summary>
         /// The image fade speed.

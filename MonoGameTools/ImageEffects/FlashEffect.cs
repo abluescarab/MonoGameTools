@@ -6,7 +6,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools.Effects {
+namespace MonoGame.Tools.ImageEffects {
     public class FlashEffect : ImageEffect {
         private float lastRun = 0.0f;
 
