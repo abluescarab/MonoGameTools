@@ -37,6 +37,10 @@ namespace MonoGame.Tools {
         /// </summary>
         public ContentManager Content { get; private set; }
         /// <summary>
+        /// Whether the screen is currently transitioning.
+        /// </summary>
+        public bool IsTransitioning { get; set; }
+        /// <summary>
         /// The instance of the ScreenManager.
         /// </summary>
         public static ScreenManager Instance {
@@ -59,6 +63,7 @@ namespace MonoGame.Tools {
             GraphicsDevice = null;
             SpriteBatch = null;
             Content = null;
+            IsTransitioning = false;
         }
 
         /// <summary>
@@ -97,6 +102,7 @@ namespace MonoGame.Tools {
 
                 if(transition != null) {
                     transition.Activate(currentScreen, screen);
+                    IsTransitioning = true;
                 }
             }
         }
@@ -132,6 +138,10 @@ namespace MonoGame.Tools {
 
                 if(transition.IsActive && transition.DoChange) {
                     SetScreen(transition.NextScreen);
+                }
+                else if(!transition.IsActive) {
+                    IsTransitioning = false;
+                    transition = null;
                 }
             }
         }
