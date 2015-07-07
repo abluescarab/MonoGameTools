@@ -115,6 +115,10 @@ namespace MonoGame.Tools {
 
                 effects.Add(effectName, effect as ImageEffect);
             }
+            else {
+                effects[effectName].IsActive = false;
+                effects[effectName].LoadContent(this);
+            }
         }
 
         /// <summary>
