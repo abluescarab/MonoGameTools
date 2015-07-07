@@ -108,6 +108,38 @@ namespace MonoGame.Tools {
         }
 
         /// <summary>
+        /// Find a list of GameScreens by their type.
+        /// </summary>
+        /// <typeparam name="T">The GameScreen child class</typeparam>
+        /// <returns>A list of screens of the specified type</returns>
+        public GameScreen[] FindScreensByType<T>() where T : GameScreen {
+            List<GameScreen> screensByType = new List<GameScreen>();
+
+            foreach(GameScreen scr in screens.Values) {
+                if(scr.GetType() == typeof(T)) {
+                    screensByType.Add(scr);
+                }
+            }
+
+            return screensByType.ToArray();
+        }
+
+        /// <summary>
+        /// Find a screen by its name.
+        /// </summary>
+        /// <param name="screenName">The screen name</param>
+        /// <returns>The screen with the specified name</returns>
+        public GameScreen FindScreenByName(string screenName) {
+            GameScreen screen = null;
+
+            if(screens.ContainsKey(screenName)) {
+                screen = screens[screenName];
+            }
+
+            return screen;
+        }
+
+        /// <summary>
         /// Load the ScreenManager content.
         /// </summary>
         /// <param name="content"></param>
