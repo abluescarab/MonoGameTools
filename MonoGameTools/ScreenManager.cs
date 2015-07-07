@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Tools.Components;
 using MonoGame.Tools.Transitions;
 
 namespace MonoGame.Tools {
