@@ -52,6 +52,10 @@ namespace MonoGame.Tools {
         /// The image's dimensions.
         /// </summary>
         public Vector2 Dimensions { get; private set; }
+        /// <summary>
+        /// Whether to center the origin or put it in the top left.
+        /// </summary>
+        public bool CenterOrigin { get; set; }
 
         /// <summary>
         /// Create the Image.
@@ -69,6 +73,7 @@ namespace MonoGame.Tools {
             Alpha = 1.0f;
             Rotation = 0.0f;
             Dimensions = Vector2.Zero;
+            CenterOrigin = true;
         }
 
         /// <summary>
@@ -82,11 +87,12 @@ namespace MonoGame.Tools {
         /// <param name="rotation">The image's rotation in radians</param>
         public Image(string path, Vector2 position, Vector2 scale,
             bool visible = true, float alpha = 1.0f,
-            float rotation = 0.0f) {
+            float rotation = 0.0f, bool centerOrigin = true) {
             origin = Vector2.Zero;
             sourceRectangle = Rectangle.Empty;
             content = null;
             effects = new Dictionary<string, ImageEffect>();
+            Dimensions = Vector2.Zero;
 
             Path = path;
             Position = position;
@@ -94,7 +100,7 @@ namespace MonoGame.Tools {
             Visible = visible;
             Alpha = alpha;
             Rotation = rotation;
-            Dimensions = Vector2.Zero;
+            CenterOrigin = centerOrigin;
         }
 
         /// <summary>
@@ -206,16 +212,19 @@ namespace MonoGame.Tools {
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch to draw to</param>
         public void Draw(SpriteBatch spriteBatch) {
-            if(Visible) {
-                origin = new Vector2(
-                    sourceRectangle.Width / 2,
-                    sourceRectangle.Height / 2);
-
-                if(Texture != null) {
-                    spriteBatch.Draw(Texture, Position + origin, sourceRectangle,
-                        Color.White * Alpha, Rotation, origin, Scale,
-                        SpriteEffects.None, 0.0f);
+            if(Visible && Texture != null) {
+                if(CenterOrigin) {
+                    origin = new Vector2(
+                        sourceRectangle.Width / 2,
+                        sourceRectangle.Height / 2);
                 }
+                else {
+                    origin = new Vector2(0, 0);
+                }
+
+                spriteBatch.Draw(Texture, Position, sourceRectangle,
+                    Color.White * Alpha, Rotation, origin, Scale,
+                    SpriteEffects.None, 0.0f);
             }
         }
     }
