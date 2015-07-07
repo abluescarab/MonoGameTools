@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools {
+namespace MonoGame.Tools.Components {
     public class ParticleEngine {
         /// <summary>
         /// The intial location particles appear from.

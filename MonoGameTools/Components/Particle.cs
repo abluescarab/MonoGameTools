@@ -8,7 +8,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools {
+namespace MonoGame.Tools.Components {
     public class Particle {
         /// <summary>
         /// The particle texture.

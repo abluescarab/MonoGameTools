@@ -8,7 +8,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools {
+namespace MonoGame.Tools.Components {
     public class AnimatedSprite {
         /// <summary>
         /// The sprite texture.

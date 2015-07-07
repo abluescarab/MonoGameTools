@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Tools.Effects;
 
-namespace MonoGame.Tools {
+namespace MonoGame.Tools.Components {
     public class Image {
         private Vector2 origin;
         private Rectangle sourceRectangle;

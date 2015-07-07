@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGame.Tools {
+namespace MonoGame.Tools.Components {
     public abstract class GameScreen {
         protected ContentManager content;
 
@@ -33,7 +33,9 @@ namespace MonoGame.Tools {
         /// Update the GameScreen status.
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
-        public abstract void Update(GameTime gameTime);
+        public virtual void Update(GameTime gameTime) {
+            InputManager.Instance.Update();
+        }
 
         /// <summary>
         /// Draw the GameScreen content.
