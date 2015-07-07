@@ -8,9 +8,11 @@ Include the MonoGameTools DLL in your project references. There are three namesp
 ## Added Classes
 
 * **AnimatedSprite.cs**: A class that can be used for sprite sheets.
-* **Image.cs**: An advanced class that can be used for external images.
+* **GameScreen.cs**: A base class for custom game screens.
+* **Image.cs**: An class that can be used for external images.
 * **Particle.cs**: A class that can be used for particles and particle systems.
 * **ParticleEngine.cs**: A class that implements a particle engine that includes options for randomized particles.
+* **ScreenManager.cs**: A singleton used for controlling the game screens.
 
 ### Image Effects
 
