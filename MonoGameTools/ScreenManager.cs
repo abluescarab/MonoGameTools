@@ -1,9 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿//===================================================================
+// ScreenManager.cs
+//
+// Based on the MonoGame RPG Made Easy tutorial series by
+// CodingMadeEasy.
+// Source: https://www.youtube.com/watch?v=agt9-J9RPZ0
+//===================================================================
+
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Tools.Transitions;
-using System;
-using System.Collections.Generic;
 
 namespace MonoGame.Tools {
     public sealed class ScreenManager {
