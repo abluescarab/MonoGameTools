@@ -1,8 +1,9 @@
 # MonoGameTools
 MonoGameTools is a library to add some useful classes to the MonoGame framework.
-README.md
+
 ## How to Use
-Include the MonoGameTools DLL in your project references. Add `using MonoGame.Tools` or `using MonoGame.Tools.Effects` to the top of each file where you need the added classes, or access each class by calling its full name.
+Include the MonoGameTools DLL in your project references. There are three namespaces:
+`MonoGame.Tools`, the base namespace, `MonoGame.Tools.Effects`, for image effects, and `MonoGame.Tools.Transitions`, for screen transitions.
 
 ## Added Classes
 
