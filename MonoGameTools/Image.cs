@@ -104,15 +104,17 @@ namespace MonoGame.Tools {
         /// <param name="effectName">The effect name</param>
         /// <param name="effect">The effect</param>
         public void AddEffect<T>(string effectName, T effect) where T : ImageEffect {
-            if(effect == null) {
-                effect = (T)Activator.CreateInstance(typeof(T));
-            }
-            else {
-                (effect as ImageEffect).IsActive = false;
-                (effect as ImageEffect).LoadContent(this);
-            }
+            if(!effects.ContainsKey(effectName)) {
+                if(effect == null) {
+                    effect = (T)Activator.CreateInstance(typeof(T));
+                }
+                else {
+                    (effect as ImageEffect).IsActive = false;
+                    (effect as ImageEffect).LoadContent(this);
+                }
 
-            effects.Add(effectName, effect as ImageEffect);
+                effects.Add(effectName, effect as ImageEffect);
+            }
         }
 
         /// <summary>
