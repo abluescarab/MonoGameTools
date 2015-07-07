@@ -1,10 +1,9 @@
-﻿//===================================================================
+﻿//=============================================================================
 // GameScreen.cs
 //
-// Based on the MonoGame RPG Made Easy tutorial series by
-// CodingMadeEasy.
+// Based on the MonoGame RPG Made Easy tutorial series by CodingMadeEasy.
 // Source: https://www.youtube.com/watch?v=CcPb0bKkpeg
-//===================================================================
+//=============================================================================
 
 using System;
 using Microsoft.Xna.Framework;

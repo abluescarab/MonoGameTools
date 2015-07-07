@@ -1,9 +1,9 @@
-﻿//===================================================================
+﻿//=============================================================================
 // AnimatedSprite.cs
 //
 // Based on the AnimatedSprite class by RB Whitaker.
 // Source: http://rbwhitaker.wikidot.com/texture-atlases-2
-//===================================================================
+//=============================================================================
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

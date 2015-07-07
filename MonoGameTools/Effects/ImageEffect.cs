@@ -1,10 +1,9 @@
-﻿//===================================================================
+﻿//=============================================================================
 // ImageEffect.cs
 // 
-// Based on the MonoGame RPG Made Easy tutorial series by
-// CodingMadeEasy.
+// Based on the MonoGame RPG Made Easy tutorial series by CodingMadeEasy.
 // Source: https://www.youtube.com/watch?v=krQZqPO0arQ
-//===================================================================
+//=============================================================================
 
 using System;
 using Microsoft.Xna.Framework;

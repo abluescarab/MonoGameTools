@@ -1,9 +1,9 @@
-﻿//===================================================================
+﻿//=============================================================================
 // Particle.cs
 //
 // Based on the Particle class by RB Whitaker.
 // Source: http://rbwhitaker.wikidot.com/2d-particle-engine-2
-//===================================================================
+//=============================================================================
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
