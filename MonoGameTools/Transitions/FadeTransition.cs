@@ -71,7 +71,6 @@ namespace MonoGame.Tools.Transitions {
                 }
                 else if(alpha >= 1.0f) {
                     increaseAlpha = false;
-                    CurrentScreen.UnloadContent();
                     DoChange = true;
                 }
             }
