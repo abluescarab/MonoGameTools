@@ -6,6 +6,7 @@
 //=============================================================================
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -135,6 +136,30 @@ namespace MonoGame.Tools.Components {
                 DeactivateEffect(effectName);
                 effects.Remove(effectName);
             }
+        }
+
+        /// <summary>
+        /// Find an ImageEffect by its name.
+        /// </summary>
+        /// <param name="effectName">The effect name</param>
+        /// <returns>The ImageEffect with the specified name</returns>
+        public ImageEffect FindEffectByName(string effectName) {
+            ImageEffect effect = null;
+            
+            if(effects.ContainsKey(effectName)) {
+                effect = effects[effectName];
+            }
+
+            return effect;
+        }
+
+        /// <summary>
+        /// Find ImageEffects of type.
+        /// </summary>
+        /// <typeparam name="T">The ImageEffect child class</typeparam>
+        /// <returns>An array of ImageEffects of the specified type</returns>
+        public ImageEffect[] FindEffectsByType<T>() where T : ImageEffect {
+            return effects.Values.OfType<T>().ToArray();
         }
 
         /// <summary>
