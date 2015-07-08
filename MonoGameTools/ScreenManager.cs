@@ -6,6 +6,7 @@
 //=============================================================================
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -113,15 +114,7 @@ namespace MonoGame.Tools {
         /// <typeparam name="T">The GameScreen child class</typeparam>
         /// <returns>A list of screens of the specified type</returns>
         public GameScreen[] FindScreensByType<T>() where T : GameScreen {
-            List<GameScreen> screensByType = new List<GameScreen>();
-
-            foreach(GameScreen scr in screens.Values) {
-                if(scr.GetType() == typeof(T)) {
-                    screensByType.Add(scr);
-                }
-            }
-
-            return screensByType.ToArray();
+            return screens.Values.OfType<T>().ToArray();
         }
 
         /// <summary>
