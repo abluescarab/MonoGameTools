@@ -18,8 +18,9 @@ namespace MonoGame.Tools {
     public sealed class ScreenManager {
         private GameScreen currentScreen;
         private Dictionary<string, GameScreen> screens;
-        private static ScreenManager instance;
         private ScreenTransition transition;
+        private static readonly Lazy<ScreenManager> instance =
+            new Lazy<ScreenManager>(() => new ScreenManager());
 
         /// <summary>
         /// The dimensions of the screen.
@@ -45,13 +46,7 @@ namespace MonoGame.Tools {
         /// The instance of the ScreenManager.
         /// </summary>
         public static ScreenManager Instance {
-            get {
-                if(instance == null) {
-                    instance = new ScreenManager();
-                }
-
-                return instance;
-            }
+            get { return instance.Value; }
         }
 
         /// <summary>
