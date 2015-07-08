@@ -8,6 +8,7 @@ Include the MonoGameTools DLL in your project references, then add the desired n
 
 ### `MonoGame.Tools` (Manager Classes)
 
+* **InputManager.cs**: A singleton used for controlling game input.
 * **ScreenManager.cs**: A singleton used for controlling the game screens.
 
 ### `MonoGame.Tools.Components` (Component Classes)
