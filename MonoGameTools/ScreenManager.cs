@@ -75,10 +75,6 @@ namespace MonoGame.Tools {
                 }
 
                 screens.Add(screenName, screen);
-
-                if(currentScreen == null) {
-                    SetScreen(screen);
-                }
             }
         }
 
