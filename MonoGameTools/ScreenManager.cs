@@ -212,6 +212,10 @@ namespace MonoGame.Tools {
         /// </summary>
         /// <param name="screen">A screen</param>
         private void SetScreen(GameScreen screen) {
+            if(currentScreen != null) {
+                currentScreen.UnloadContent();
+            }
+
             currentScreen = screen;
             screen.LoadContent(Content);
 
