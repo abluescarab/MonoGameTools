@@ -52,7 +52,9 @@ namespace MonoGame.Tools.Effects {
         /// <summary>
         /// Unload the ImageEffect content.
         /// </summary>
-        public virtual void UnloadContent() { }
+        public virtual void UnloadContent() {
+            image = null;
+        }
 
         /// <summary>
         /// Activate the effect.
