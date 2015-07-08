@@ -4,6 +4,8 @@ MonoGameTools is a library that adds some useful classes to the MonoGame framewo
 ## How to Use
 Include the MonoGameTools DLL in your project references, then add the desired namespace to any files.
 
+You can check out the demo project for examples on inheriting the GameScreen class, creating screens and images, and using image effects and screen transitions.
+
 ## Added Namespaces
 
 ### `MonoGame.Tools` (Manager Classes)
