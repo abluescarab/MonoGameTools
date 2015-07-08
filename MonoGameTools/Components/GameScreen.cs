@@ -30,6 +30,14 @@ namespace MonoGame.Tools.Components {
         }
 
         /// <summary>
+        /// Reset the screen.
+        /// </summary>
+        public virtual void Reset() {
+            UnloadContent();
+            LoadContent(content);
+        }
+
+        /// <summary>
         /// Update the GameScreen status.
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
