@@ -86,8 +86,8 @@ namespace MonoGame.Tools {
         /// Change the screen.
         /// </summary>
         /// <param name="screenName">The screen name</param>
-        /// <param name="transition">The ScreenTransition to use between screens</param>
-        /// <returns></returns>
+        /// <param name="transition">The ScreenTransition to use between
+        /// screens</param>
         public void ChangeScreen(string screenName,
             ScreenTransition transition = null) {
             GameScreen screen = null;
@@ -99,6 +99,30 @@ namespace MonoGame.Tools {
                 if(transition != null) {
                     transition.Activate(currentScreen, screen);
                     IsTransitioning = true;
+                }
+                else {
+                    SetScreen(screen);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Change the screen.
+        /// </summary>
+        /// <param name="nextScreen">The next screen to load</param>
+        /// <param name="transition">The ScreenTransition to use between
+        /// screens</param>
+        public void ChangeScreen(GameScreen nextScreen,
+            ScreenTransition transition = null) {
+            this.transition = transition;
+
+            if(nextScreen != null) {
+                if(transition != null) {
+                    transition.Activate(currentScreen, nextScreen);
+                    IsTransitioning = true;
+                }
+                else {
+                    SetScreen(nextScreen);
                 }
             }
         }
