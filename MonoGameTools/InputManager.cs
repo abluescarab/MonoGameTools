@@ -7,6 +7,7 @@
 // Todo:
 //    Implement joystick features
 //    Multiplayer input choices
+//    Implement multiple input choices
 //=============================================================================
 
 using System;
@@ -34,10 +35,6 @@ namespace MonoGame.Tools {
         private static readonly Lazy<InputManager> instance =
             new Lazy<InputManager>(() => new InputManager());
 
-        /// <summary>
-        /// The current input.
-        /// </summary>
-        public InputType SelectedInput { get; set; }
         /// <summary>
         /// The instance of the InputManager.
         /// </summary>
@@ -143,38 +140,14 @@ namespace MonoGame.Tools {
         /// <summary>
         /// Create the InputManager.
         /// </summary>
-        private InputManager() {
-            if(GamePad.GetState(PlayerIndex.One).IsConnected) {
-                SelectedInput = InputType.GamePad;
-            }
-            else {
-                SelectedInput = InputType.KeyboardAndMouse;
-            }
-        }
+        private InputManager() { }
 
         /// <summary>
         /// Update the InputManager state.
         /// </summary>
         public void Update() {
-            GetSelectedStates();
-        }
-
-        /// <summary>
-        /// Get input states based on selected input.
-        /// </summary>
-        private void GetSelectedStates() {
-            switch(SelectedInput) {
-                case InputType.Keyboard:
-                    KeyboardInput.GetStates();
-                    break;
-                case InputType.Mouse:
-                    MouseInput.GetStates();
-                    break;
-                case InputType.KeyboardAndMouse:
-                    KeyboardInput.GetStates();
-                    MouseInput.GetStates();
-                    break;
-            }
+            KeyboardInput.GetStates();
+            MouseInput.GetStates();
         }
 
         /// <summary>
