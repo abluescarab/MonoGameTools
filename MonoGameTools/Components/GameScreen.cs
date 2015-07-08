@@ -33,9 +33,7 @@ namespace MonoGame.Tools.Components {
         /// Update the GameScreen status.
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
-        public virtual void Update(GameTime gameTime) {
-            InputManager.Instance.Update();
-        }
+        public virtual void Update(GameTime gameTime) { }
 
         /// <summary>
         /// Draw the GameScreen content.

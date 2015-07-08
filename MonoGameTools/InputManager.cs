@@ -143,19 +143,13 @@ namespace MonoGame.Tools {
         private InputManager() { }
 
         /// <summary>
-        /// Update the InputManager state.
-        /// </summary>
-        public void Update() {
-            KeyboardInput.GetStates();
-            MouseInput.GetStates();
-        }
-
-        /// <summary>
         /// Check if a keyboard key has been pressed.
         /// </summary>
         /// <param name="keys">The Keys to check</param>
         /// <returns>If the key has been pressed</returns>
         public bool KeyPressed(params Keys[] keys) {
+            KeyboardInput.GetStates();
+
             foreach(Keys key in keys) {
                 if(KeyboardInput.CurrentState.IsKeyDown(key) &&
                     KeyboardInput.PreviousState.IsKeyUp(key)) {
@@ -172,6 +166,8 @@ namespace MonoGame.Tools {
         /// <param name="keys">The Keys to check</param>
         /// <returns>If the key has been released</returns>
         public bool KeyReleased(params Keys[] keys) {
+            KeyboardInput.GetStates();
+
             foreach(Keys key in keys) {
                 if(KeyboardInput.CurrentState.IsKeyUp(key) &&
                     KeyboardInput.PreviousState.IsKeyDown(key)) {
@@ -232,6 +228,8 @@ namespace MonoGame.Tools {
         /// <param name="buttons">The MouseButtons to check</param>
         /// <returns>If the MouseButton has been pressed</returns>
         public bool MouseButtonPressed(params MouseButton[] buttons) {
+            MouseInput.GetStates();
+
             foreach(MouseButton button in buttons) {
                 if(MouseInput.CurrentState[button] == ButtonState.Pressed &&
                     MouseInput.PreviousState[button] == ButtonState.Released) {
@@ -248,6 +246,8 @@ namespace MonoGame.Tools {
         /// <param name="buttons">The MouseButtons to check</param>
         /// <returns>If the MouseButton has been released</returns>
         public bool MouseButtonReleased(params MouseButton[] buttons) {
+            MouseInput.GetStates();
+
             foreach(MouseButton button in buttons) {
                 if(MouseInput.CurrentState[button] == ButtonState.Released &&
                     MouseInput.PreviousState[button] == ButtonState.Pressed) {
