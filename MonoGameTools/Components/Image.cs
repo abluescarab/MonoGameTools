@@ -198,7 +198,7 @@ namespace MonoGame.Tools.Components {
                         Texture.Height);
                 }
                 else {
-                    Dimensions = new Vector2(0, 0);
+                    Dimensions = Vector2.Zero;
                 }
             }
 
@@ -215,9 +215,14 @@ namespace MonoGame.Tools.Components {
             foreach(ImageEffect effect in effects.Values) {
                 effect.Deactivate();
             }
+            
+            Texture = null;
+            Dimensions = Vector2.Zero;
+            sourceRectangle = Rectangle.Empty;
 
             if(content != null) {
                 content.Unload();
+                content = null;
             }
         }
 
