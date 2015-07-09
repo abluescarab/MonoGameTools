@@ -46,8 +46,8 @@ namespace MonoGame.Tools {
         /// The KeyboardInput state manager.
         /// </summary>
         private static class KeyboardInput {
-            public static KeyboardState CurrentState { get; set; }
-            public static KeyboardState PreviousState { get; set; }
+            public static KeyboardState CurrentState { get; private set; }
+            public static KeyboardState PreviousState { get; private set; }
 
             public static void GetStates() {
                 PreviousState = CurrentState;
@@ -121,11 +121,11 @@ namespace MonoGame.Tools {
             /// <summary>
             /// The current state.
             /// </summary>
-            public static GamePadState CurrentState { get; set; }
+            public static GamePadState CurrentState { get; private set; }
             /// <summary>
             /// The previous state.
             /// </summary>
-            public static GamePadState PreviousState { get; set; }
+            public static GamePadState PreviousState { get; private set; }
 
             /// <summary>
             /// Get the current and previous states.
