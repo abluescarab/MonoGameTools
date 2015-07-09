@@ -15,9 +15,9 @@ using MonoGame.Tools.Effects;
 
 namespace MonoGame.Tools.Components {
     public class Image {
-        private Vector2 origin = Vector2.Zero;
-        private Rectangle sourceRectangle = Rectangle.Empty;
-        private Dictionary<string, ImageEffect> effects =
+        protected Vector2 origin = Vector2.Zero;
+        protected Rectangle sourceRectangle = Rectangle.Empty;
+        protected Dictionary<string, ImageEffect> effects =
             new Dictionary<string,ImageEffect>();
 
         /// <summary>
@@ -47,11 +47,11 @@ namespace MonoGame.Tools.Components {
         /// <summary>
         /// The image's texture.
         /// </summary>
-        public Texture2D Texture { get; private set; }
+        public Texture2D Texture { get; protected set; }
         /// <summary>
         /// The image's dimensions.
         /// </summary>
-        public Vector2 Dimensions { get; private set; }
+        public Vector2 Dimensions { get; protected set; }
         /// <summary>
         /// Whether to center the origin or put it in the top left.
         /// </summary>
