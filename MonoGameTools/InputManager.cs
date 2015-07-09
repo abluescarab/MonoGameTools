@@ -241,6 +241,28 @@ namespace MonoGame.Tools {
         }
 
         /// <summary>
+        /// Check if a mouse button has been pressed at a location.
+        /// </summary>
+        /// <param name="x">The x-coordinate to check</param>
+        /// <param name="y">The y-coordinate to check</param>
+        /// <param name="buttons">The MouseButtons to check</param>
+        /// <returns>If the MouseButton has been pressed</returns>
+        public bool MouseButtonPressed(int x, int y, params MouseButton[] buttons) {
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in buttons) {
+                if(MouseInput.CurrentState.X == x &&
+                   MouseInput.CurrentState.Y == y &&
+                   MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Released) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Check if a mouse button has been released.
         /// </summary>
         /// <param name="buttons">The MouseButtons to check</param>
@@ -252,6 +274,28 @@ namespace MonoGame.Tools {
                 if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
                     MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
                     return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if a mouse button has been released at a location.
+        /// </summary>
+        /// <param name="x">The x-coordinate to check</param>
+        /// <param name="y">The y-coordinate to check</param>
+        /// <param name="buttons">The MouseButtons to check</param>
+        /// <returns>If the MouseButton has been released</returns>
+        public bool MouseButtonReleased(int x, int y, params MouseButton[] buttons) {
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in buttons) {
+                if(MouseInput.CurrentState.X == x &&
+                   MouseInput.CurrentState.Y == y &&
+                   MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
+                       return true;
                 }
             }
 
