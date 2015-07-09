@@ -17,7 +17,6 @@ namespace MonoGame.Tools.Components {
     public class Image {
         private Vector2 origin = Vector2.Zero;
         private Rectangle sourceRectangle = Rectangle.Empty;
-        private ContentManager content = null;
         private Dictionary<string, ImageEffect> effects =
             new Dictionary<string,ImageEffect>();
 
@@ -179,10 +178,8 @@ namespace MonoGame.Tools.Components {
         /// </summary>
         /// <param name="content">The ContentManager to load to</param>
         public void LoadContent(ContentManager content) {
-            this.content = content;
-
             if(!string.IsNullOrEmpty(Path)) {
-                Texture = this.content.Load<Texture2D>(Path);
+                Texture = content.Load<Texture2D>(Path);
 
                 if(Texture != null) {
                     Dimensions = new Vector2( Texture.Width, Texture.Height);
