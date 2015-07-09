@@ -280,11 +280,20 @@ namespace MonoGame.Tools {
                    MouseInput.CurrentState.Y == y &&
                    MouseInput.CurrentButtonState[button] == ButtonState.Released &&
                    MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
-                       return true;
+                    return true;
                 }
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Get the current position of the mouse cursor.
+        /// </summary>
+        /// <returns>The position of the mouse cursor</returns>
+        public Vector2 GetMousePosition() {
+            MouseInput.GetStates();
+            return MouseInput.CurrentState.Position.ToVector2();
         }
     }
 }
