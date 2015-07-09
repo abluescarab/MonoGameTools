@@ -59,14 +59,14 @@ namespace MonoGame.Tools {
         /// The MouseInput state manager.
         /// </summary>
         private static class MouseInput {
-            private static MouseState currentState;
-            private static MouseState previousState;
+            public static MouseState CurrentState { get; private set; }
+            public static MouseState PreviousState { get; private set; }
 
             /// <summary>
             /// The current state.
             /// </summary>
             public static Dictionary<MouseButton, ButtonState>
-                CurrentState = new Dictionary<MouseButton, ButtonState>() {
+                CurrentButtonState = new Dictionary<MouseButton, ButtonState>() {
                     { MouseButton.Left, ButtonState.Released },
                     { MouseButton.Middle, ButtonState.Released },
                     { MouseButton.Right, ButtonState.Released },
@@ -78,7 +78,7 @@ namespace MonoGame.Tools {
             /// The previous state.
             /// </summary>
             public static Dictionary<MouseButton, ButtonState>
-                PreviousState = new Dictionary<MouseButton, ButtonState>() {
+                PreviousButtonState = new Dictionary<MouseButton, ButtonState>() {
                     { MouseButton.Left, ButtonState.Released },
                     { MouseButton.Middle, ButtonState.Released },
                     { MouseButton.Right, ButtonState.Released },
@@ -90,8 +90,8 @@ namespace MonoGame.Tools {
             /// Get the current and previous states.
             /// </summary>
             public static void GetStates() {
-                previousState = currentState;
-                currentState = Mouse.GetState();
+                PreviousState = CurrentState;
+                CurrentState = Mouse.GetState();
 
                 AssignStates();
             }
@@ -100,17 +100,17 @@ namespace MonoGame.Tools {
             /// Assign the current and previous button states.
             /// </summary>
             private static void AssignStates() {
-                PreviousState[MouseButton.Left] = previousState.LeftButton;
-                PreviousState[MouseButton.Middle] = previousState.MiddleButton;
-                PreviousState[MouseButton.Right] = previousState.RightButton;
-                PreviousState[MouseButton.XButton1] = previousState.XButton1;
-                PreviousState[MouseButton.XButton2] = previousState.XButton2;
+                PreviousButtonState[MouseButton.Left] = PreviousState.LeftButton;
+                PreviousButtonState[MouseButton.Middle] = PreviousState.MiddleButton;
+                PreviousButtonState[MouseButton.Right] = PreviousState.RightButton;
+                PreviousButtonState[MouseButton.XButton1] = PreviousState.XButton1;
+                PreviousButtonState[MouseButton.XButton2] = PreviousState.XButton2;
 
-                CurrentState[MouseButton.Left] = currentState.LeftButton;
-                CurrentState[MouseButton.Middle] = currentState.MiddleButton;
-                CurrentState[MouseButton.Right] = currentState.RightButton;
-                CurrentState[MouseButton.XButton1] = currentState.XButton1;
-                CurrentState[MouseButton.XButton2] = currentState.XButton2;
+                CurrentButtonState[MouseButton.Left] = CurrentState.LeftButton;
+                CurrentButtonState[MouseButton.Middle] = CurrentState.MiddleButton;
+                CurrentButtonState[MouseButton.Right] = CurrentState.RightButton;
+                CurrentButtonState[MouseButton.XButton1] = CurrentState.XButton1;
+                CurrentButtonState[MouseButton.XButton2] = CurrentState.XButton2;
             }
         }
 
@@ -231,8 +231,8 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in buttons) {
-                if(MouseInput.CurrentState[button] == ButtonState.Pressed &&
-                    MouseInput.PreviousState[button] == ButtonState.Released) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                    MouseInput.PreviousButtonState[button] == ButtonState.Released) {
                     return true;
                 }
             }
@@ -249,8 +249,8 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in buttons) {
-                if(MouseInput.CurrentState[button] == ButtonState.Released &&
-                    MouseInput.PreviousState[button] == ButtonState.Pressed) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                    MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
                     return true;
                 }
             }
