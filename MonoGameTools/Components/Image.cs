@@ -15,10 +15,11 @@ using MonoGame.Tools.Effects;
 
 namespace MonoGame.Tools.Components {
     public class Image {
-        private Vector2 origin;
-        private Rectangle sourceRectangle;
-        private ContentManager content;
-        private Dictionary<string, ImageEffect> effects;
+        private Vector2 origin = Vector2.Zero;
+        private Rectangle sourceRectangle = Rectangle.Empty;
+        private ContentManager content = null;
+        private Dictionary<string, ImageEffect> effects =
+            new Dictionary<string,ImageEffect>();
 
         /// <summary>
         /// The image path.
@@ -61,11 +62,6 @@ namespace MonoGame.Tools.Components {
         /// Create the Image.
         /// </summary>
         public Image() {
-            origin = Vector2.Zero;
-            sourceRectangle = Rectangle.Empty;
-            content = null;
-            effects = new Dictionary<string, ImageEffect>();
-
             Path = string.Empty;
             Position = Vector2.Zero;
             Scale = Vector2.One;
@@ -88,10 +84,6 @@ namespace MonoGame.Tools.Components {
         public Image(string path, Vector2 position, Vector2 scale,
             bool visible = true, float alpha = 1.0f,
             float rotation = 0.0f, bool centerOrigin = true) {
-            origin = Vector2.Zero;
-            sourceRectangle = Rectangle.Empty;
-            content = null;
-            effects = new Dictionary<string, ImageEffect>();
             Dimensions = Vector2.Zero;
 
             Path = path;
