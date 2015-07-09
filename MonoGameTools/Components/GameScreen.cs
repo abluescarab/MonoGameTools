@@ -23,13 +23,6 @@ namespace MonoGame.Tools.Components {
         }
 
         /// <summary>
-        /// Unload the GameScreen content.
-        /// </summary>
-        public virtual void UnloadContent() {
-            content.Unload();
-        }
-
-        /// <summary>
         /// Reset the screen.
         /// </summary>
         public virtual void Reset() {
@@ -42,6 +35,11 @@ namespace MonoGame.Tools.Components {
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
         public virtual void Update(GameTime gameTime) { }
+
+        /// <summary>
+        /// Unload the GameScreen content.
+        /// </summary>
+        public abstract void UnloadContent();
 
         /// <summary>
         /// Draw the GameScreen content.
