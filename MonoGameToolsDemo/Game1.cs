@@ -58,6 +58,7 @@ namespace MonoGameToolsDemo {
         /// </summary>
         protected override void UnloadContent() {
             ScreenManager.Instance.UnloadContent();
+            Content.Unload();
         }
 
         /// <summary>
