@@ -185,9 +185,7 @@ namespace MonoGame.Tools.Components {
                 Texture = this.content.Load<Texture2D>(Path);
 
                 if(Texture != null) {
-                    Dimensions = new Vector2(
-                        Texture.Width,
-                        Texture.Height);
+                    Dimensions = new Vector2( Texture.Width, Texture.Height);
                 }
                 else {
                     Dimensions = Vector2.Zero;
@@ -211,11 +209,6 @@ namespace MonoGame.Tools.Components {
             Texture = null;
             Dimensions = Vector2.Zero;
             sourceRectangle = Rectangle.Empty;
-
-            if(content != null) {
-                content.Unload();
-                content = null;
-            }
         }
 
         /// <summary>
