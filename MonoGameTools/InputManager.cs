@@ -17,21 +17,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame.Tools {
     public sealed class InputManager {
-        public enum InputType {
-            Keyboard,
-            Mouse,
-            KeyboardAndMouse,
-            GamePad
-        }
-
-        public enum MouseButton {
-            Left,
-            Middle,
-            Right,
-            XButton1,
-            XButton2
-        }
-
         private static readonly Lazy<InputManager> instance =
             new Lazy<InputManager>(() => new InputManager());
 
