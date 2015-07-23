@@ -19,6 +19,7 @@
     }
 
     public enum MouseButton {
+        Any,
         Left,
         Middle,
         Right,
