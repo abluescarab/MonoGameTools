@@ -290,8 +290,7 @@ namespace MonoGame.Tools {
         /// </summary>
         /// <returns>The position of the mouse cursor</returns>
         public Vector2 GetMousePosition() {
-            MouseInput.GetStates();
-            return MouseInput.CurrentState.Position.ToVector2();
+            return Mouse.GetState().Position.ToVector2();
         }
     }
 }
