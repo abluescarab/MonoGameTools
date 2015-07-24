@@ -392,9 +392,11 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
-                if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
-                   MouseInput.PreviousButtonState[button] == ButtonState.Released) {
-                    list.Add(button);
+                if(button != MouseButton.None) {
+                    if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                       MouseInput.PreviousButtonState[button] == ButtonState.Released) {
+                        list.Add(button);
+                    }
                 }
             }
 
@@ -415,9 +417,11 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
-                if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
-                   MouseInput.PreviousButtonState[button] == ButtonState.Released) {
-                    return true;
+                if(button != MouseButton.None) {
+                    if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                       MouseInput.PreviousButtonState[button] == ButtonState.Released) {
+                        return true;
+                    }
                 }
             }
 
@@ -434,9 +438,11 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
-                if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
-                   MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
-                    list.Add(button);
+                if(button != MouseButton.None) {
+                    if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                       MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
+                        list.Add(button);
+                    }
                 }
             }
 
@@ -457,9 +463,11 @@ namespace MonoGame.Tools {
             MouseInput.GetStates();
 
             foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
-                if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
-                   MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
-                    return true;
+                if(button != MouseButton.None) {
+                    if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                       MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
+                        return true;
+                    }
                 }
             }
 
