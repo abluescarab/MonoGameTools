@@ -1,4 +1,8 @@
-﻿namespace MonoGame.Tools {
+﻿//=============================================================================
+// Enums.cs
+//=============================================================================
+
+namespace MonoGame.Tools {
     public enum Alignment {
         TopLeft,
         TopCenter,

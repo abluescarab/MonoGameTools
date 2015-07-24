@@ -1,4 +1,11 @@
-﻿using System;
+﻿//=============================================================================
+// Cursor.cs
+//
+// Todo:
+//    Mouse smoothing
+//=============================================================================
+
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
