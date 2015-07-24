@@ -52,7 +52,7 @@
     <Compile Include="Components\Particle.cs" />
     <Compile Include="Components\ParticleEngine.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Events\MouseEvent.cs" />
+    <Compile Include="Events\MouseEventArgs.cs" />
     <Compile Include="Events\MouseEventHandler.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
