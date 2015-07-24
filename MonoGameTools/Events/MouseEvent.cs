@@ -35,7 +35,7 @@ namespace MonoGame.Tools.Events {
         /// </summary>
         public MouseEventArgs(MouseButton button, int clicks, int x, int y,
             int delta) {
-                System.Diagnostics.Debug.Assert((button & (MouseButton.Any | 
+                System.Diagnostics.Debug.Assert((button & (MouseButton.None | 
                     MouseButton.Left | MouseButton.Middle | 
                     MouseButton.Right | MouseButton.XButton1 | 
                     MouseButton.XButton2)) == button,
