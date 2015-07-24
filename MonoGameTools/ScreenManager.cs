@@ -171,7 +171,9 @@ namespace MonoGame.Tools {
         /// </summary>
         /// <param name="gameTime">The game time TimeSpan</param>
         public void Update(GameTime gameTime) {
-            currentScreen.Update(gameTime);
+            if(currentScreen != null) {
+                currentScreen.Update(gameTime);
+            }
 
             if(transition != null) {
                 transition.Update(gameTime);
@@ -192,7 +194,10 @@ namespace MonoGame.Tools {
         /// <param name="spriteBatch">The SpriteBatch to draw to</param>
         public void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Begin();
-            currentScreen.Draw(spriteBatch);
+
+            if(currentScreen != null) {
+                currentScreen.Draw(spriteBatch);
+            }
 
             if(transition != null) {
                 if(transition.IsActive) {
