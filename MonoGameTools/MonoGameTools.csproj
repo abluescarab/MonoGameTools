@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Components\AnimatedSprite.cs" />
     <Compile Include="Controls\Button.cs" />
-    <Compile Include="Cursor.cs" />
+    <Compile Include="Components\Cursor.cs" />
     <Compile Include="Effects\FadeEffect.cs" />
     <Compile Include="Effects\FlashEffect.cs" />
     <Compile Include="Effects\ZoomEffect.cs" />

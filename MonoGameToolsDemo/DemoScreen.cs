@@ -9,10 +9,14 @@ using MonoGame.Tools;
 using MonoGame.Tools.Components;
 using MonoGame.Tools.Effects;
 using MonoGame.Tools.Transitions;
+using MonoGame.Tools.Styles;
+using MonoGame.Tools.Events;
 
 namespace MonoGameToolsDemo {
     public class DemoScreen : GameScreen {
         public Dictionary<string, Image> Images { get; private set; }
+        private Button button;
+        private Cursor cursor;
 
         public DemoScreen() {
             Images = new Dictionary<string, Image>();
@@ -38,6 +42,29 @@ namespace MonoGameToolsDemo {
             Images.Add("fadeImage", fadeImage);
             Images.Add("flashImage", flashImage);
             Images.Add("zoomImage", zoomImage);
+
+            button = new Button(new Vector2(200, 25), new Vector2(400, 10),
+                "Test Button", Color.Black, "Arial", Color.White, new Border(Color.Black,
+                    new Thickness(2)));
+            button.TextAlignment = Alignment.MiddleCenter;
+
+            cursor = new Cursor("cursor");
+
+            button.Click += button_Click;
+            button.MouseEnter += button_MouseEnter;
+            button.MouseLeave += button_MouseLeave;
+        }
+
+        void button_Click(object sender, MouseEventArgs e) {
+            ((Button)sender).Text = "Mouse Clicked";
+        }
+
+        void button_MouseLeave(object sender, MouseEventArgs e) {
+            ((Button)sender).Text = "Mouse Left";
+        }
+
+        void button_MouseEnter(object sender, MouseEventArgs e) {
+            ((Button)sender).Text = "Mouse Entered";
         }
 
         public override void LoadContent(ContentManager content) {
@@ -46,18 +73,27 @@ namespace MonoGameToolsDemo {
             foreach(Image image in Images.Values) {
                 image.LoadContent(content);
             }
+
+            button.LoadContent(content, ScreenManager.Instance.GraphicsDevice);
+
+            if(cursor != null) {
+                cursor.LoadContent(content);
+            }
         }
 
         public override void UnloadContent() {
-            base.UnloadContent();
-
-            Images["fadeImage"].Visible = false;
-            Images["flashImage"].Visible = false;
-            Images["zoomImage"].Visible = false;
+            button.UnloadContent();
 
             foreach(Image image in Images.Values) {
                 image.UnloadContent();
             }
+
+            Images["fadeImage"].Visible = false;
+            Images["flashImage"].Visible = false;
+            Images["zoomImage"].Visible = false;
+            button.Text = "Test Button";
+
+            cursor.UnloadContent();
         }
 
         public override void Update(GameTime gameTime) {
@@ -67,11 +103,14 @@ namespace MonoGameToolsDemo {
                 image.Update(gameTime);
             }
 
+            button.Update(gameTime);
+            cursor.Update(gameTime);
+
             if(!ScreenManager.Instance.IsTransitioning) {
                 if(InputManager.Instance.KeyPressed(Keys.Enter) ||
                     InputManager.Instance.ButtonPressed(PlayerIndex.One,
                     Buttons.A) || InputManager.Instance.MouseButtonPressed(
-                    InputManager.MouseButton.Right)) {
+                    MouseButton.Right)) {
                     if(!Images["fadeImage"].Visible) {
                         Images["fadeImage"].Visible = true;
                         Images["fadeImage"].ActivateEffect("fadeEffect");
@@ -98,11 +137,15 @@ namespace MonoGameToolsDemo {
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
+            button.Draw(spriteBatch);
+
             foreach(Image image in Images.Values) {
                 if(image.Visible) {
                     image.Draw(spriteBatch);
                 }
             }
+
+            cursor.Draw(spriteBatch);
         }
     }
 }
