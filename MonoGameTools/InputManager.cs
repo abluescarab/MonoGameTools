@@ -128,6 +128,79 @@ namespace MonoGame.Tools {
         private InputManager() { }
 
         /// <summary>
+        /// Check if any keyboard key has been pressed.
+        /// </summary>
+        /// <param name="keys">The Keys that have been pressed</param>
+        /// <returns>If any keys have been pressed</returns>
+        public bool AnyKeyPressed(out Keys[] keys) {
+            KeyboardInput.GetStates();
+
+            keys = KeyboardInput.CurrentState.GetPressedKeys();
+
+            if(KeyboardInput.CurrentState.GetPressedKeys().Length > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any keyboard key has been pressed.
+        /// </summary>
+        /// <returns>If any keys have been pressed</returns>
+        public bool AnyKeyPressed() {
+            KeyboardInput.GetStates();
+
+            if(KeyboardInput.CurrentState.GetPressedKeys().Length > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any keyboard key has been released.
+        /// </summary>
+        /// <param name="keys">The Keys that have been released</param>
+        /// <returns>If any keys have been released</returns>
+        public bool AnyKeyReleased(out Keys[] keys) {
+            List<Keys> list = new List<Keys>();
+            KeyboardInput.GetStates();
+
+            foreach(Keys key in Enum.GetValues(typeof(Keys))) {
+                if(KeyboardInput.CurrentState.IsKeyUp(key) &&
+                   KeyboardInput.PreviousState.IsKeyDown(key)) {
+                    list.Add(key);
+                }
+            }
+
+            keys = list.ToArray();
+
+            if(keys.Length > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any keyboard key has been released.
+        /// </summary>
+        /// <returns>If any keys have been released</returns>
+        public bool AnyKeyReleased() {
+            KeyboardInput.GetStates();
+
+            foreach(Keys key in Enum.GetValues(typeof(Keys))) {
+                if(KeyboardInput.CurrentState.IsKeyUp(key) &&
+                   KeyboardInput.PreviousState.IsKeyDown(key)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Check if a keyboard key has been pressed.
         /// </summary>
         /// <param name="keys">The Keys to check</param>
@@ -157,6 +230,108 @@ namespace MonoGame.Tools {
                 if(KeyboardInput.CurrentState.IsKeyUp(key) &&
                     KeyboardInput.PreviousState.IsKeyDown(key)) {
                     return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if any GamePad buttons have been pressed.
+        /// </summary>
+        /// <param name="playerIndex">The index of the controller</param>
+        /// <param name="buttons">The Buttons that are pressed</param>
+        /// <returns>If any GamePad buttons have been pressed</returns>
+        public bool AnyButtonPressed(PlayerIndex playerIndex, out Buttons[] buttons) {
+            List<Buttons> list = new List<Buttons>();
+
+            GamePadInput.GetStates(playerIndex);
+
+            buttons = null;
+
+            if(GamePadInput.CurrentState.IsConnected) {
+                foreach(Buttons button in Enum.GetValues(typeof(Buttons))) {
+                    if(GamePadInput.CurrentState.IsButtonDown(button) &&
+                       GamePadInput.PreviousState.IsButtonUp(button)) {
+                        list.Add(button);
+                    }
+                }
+
+                buttons = list.ToArray();
+
+                if(buttons.Length > 0) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if any GamePad buttons have been pressed.
+        /// </summary>
+        /// <param name="playerIndex">The index of the controller</param>
+        /// <returns>If any GamePad buttons have been pressed</returns>
+        public bool AnyButtonPressed(PlayerIndex playerIndex) {
+            GamePadInput.GetStates(playerIndex);
+
+            if(GamePadInput.CurrentState.IsConnected) {
+                foreach(Buttons button in Enum.GetValues(typeof(Buttons))) {
+                    if(GamePadInput.CurrentState.IsButtonDown(button) &&
+                       GamePadInput.PreviousState.IsButtonUp(button)) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if any GamePad buttons have been released.
+        /// </summary>
+        /// <param name="playerIndex">The index of the controller</param>
+        /// <param name="buttons">The Buttons that are released</param>
+        /// <returns>If any GamePad buttons have been released</returns>
+        public bool AnyButtonReleased(PlayerIndex playerIndex, out Buttons[] buttons) {
+            List<Buttons> list = new List<Buttons>();
+
+            GamePadInput.GetStates(playerIndex);
+
+            buttons = null;
+
+            if(GamePadInput.CurrentState.IsConnected) {
+                foreach(Buttons button in Enum.GetValues(typeof(Buttons))) {
+                    if(GamePadInput.CurrentState.IsButtonUp(button) &&
+                       GamePadInput.PreviousState.IsButtonDown(button)) {
+                        list.Add(button);
+                    }
+                }
+
+                buttons = list.ToArray();
+
+                if(buttons.Length > 0) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if any GamePad buttons have been released.
+        /// </summary>
+        /// <param name="playerIndex">The index of the controller</param>
+        /// <returns>If any GamePad buttons have been released</returns>
+        public bool AnyButtonReleased(PlayerIndex playerIndex) {
+            GamePadInput.GetStates(playerIndex);
+
+            if(GamePadInput.CurrentState.IsConnected) {
+                foreach(Buttons button in Enum.GetValues(typeof(Buttons))) {
+                    if(GamePadInput.CurrentState.IsButtonUp(button) &&
+                       GamePadInput.PreviousState.IsButtonDown(button)) {
+                        return true;
+                    }
                 }
             }
 
@@ -208,6 +383,90 @@ namespace MonoGame.Tools {
         }
 
         /// <summary>
+        /// Check if any mouse button has been pressed.
+        /// </summary>
+        /// <param name="buttons">the MouseButtons that have been pressed</param>
+        /// <returns>If any MouseButtons have been pressed</returns>
+        public bool AnyMouseButtonPressed(out MouseButton[] buttons) {
+            List<MouseButton> list = new List<MouseButton>();
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Released) {
+                    list.Add(button);
+                }
+            }
+
+            buttons = list.ToArray();
+
+            if(buttons.Length > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any mouse button has been pressed.
+        /// </summary>
+        /// <returns>If any MouseButtons have been pressed</returns>
+        public bool AnyMouseButtonPressed() {
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Pressed &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Released) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any mouse button has been released.
+        /// </summary>
+        /// <param name="buttons">the MouseButtons that have been released</param>
+        /// <returns>If any MouseButtons have been released</returns>
+        public bool AnyMouseButtonReleased(out MouseButton[] buttons) {
+            List<MouseButton> list = new List<MouseButton>();
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
+                    list.Add(button);
+                }
+            }
+
+            buttons = list.ToArray();
+
+            if(buttons.Length > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if any mouse button has been released.
+        /// </summary>
+        /// <returns>If any MouseButtons have been released</returns>
+        public bool AnyMouseButtonReleased() {
+            MouseInput.GetStates();
+
+            foreach(MouseButton button in Enum.GetValues(typeof(MouseButton))) {
+                if(MouseInput.CurrentButtonState[button] == ButtonState.Released &&
+                   MouseInput.PreviousButtonState[button] == ButtonState.Pressed) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Check if a mouse button has been pressed.
         /// </summary>
         /// <param name="buttons">The MouseButtons to check</param>
@@ -231,7 +490,7 @@ namespace MonoGame.Tools {
         /// <param name="position">The position of the mouse cursor</param>
         /// <param name="buttons">The MouseButtons to check</param>
         /// <returns>If the MouseButton has been pressed</returns>
-        public bool MouseButtonPressed(out Vector2 position, 
+        public bool MouseButtonPressed(out Vector2 position,
             params MouseButton[] buttons) {
             MouseInput.GetStates();
             position = MouseInput.CurrentState.Position.ToVector2();
