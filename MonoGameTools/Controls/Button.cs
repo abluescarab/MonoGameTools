@@ -18,20 +18,61 @@ namespace MonoGame.Tools.Components {
         private SpriteFont font = null;
         private bool wasHoveringOver = false;
 
+        /// <summary>
+        /// Fires when the button is clicked.
+        /// </summary>
         public event MouseEventHandler Click;
+        /// <summary>
+        /// Fires when the mouse enters the button bounds.
+        /// </summary>
         public event MouseEventHandler MouseEnter;
+        /// <summary>
+        /// Fires when the mouse leaves the button bounds.
+        /// </summary>
         public event MouseEventHandler MouseLeave;
 
+        /// <summary>
+        /// The size of the button.
+        /// </summary>
         public Vector2 Size { get; set; }
+        /// <summary>
+        /// The position of the button.
+        /// </summary>
         public Vector2 Position { get; set; }
+        /// <summary>
+        /// The text of the button.
+        /// </summary>
         public string Text { get; set; }
+        /// <summary>
+        /// The text color of the button.
+        /// </summary>
         public Color TextColor { get; set; }
+        /// <summary>
+        /// The background color of the button.
+        /// </summary>
         public Color BackgroundColor { get; set; }
+        /// <summary>
+        /// The alignment of the button text.
+        /// </summary>
         public Alignment TextAlignment { get; set; }
+        /// <summary>
+        /// The border around the button.
+        /// </summary>
         public Border Border { get; set; }
+        /// <summary>
+        /// The font used for the button text.
+        /// </summary>
         public string SpriteFont { get; set; }
+        /// <summary>
+        /// The alpha of the button.
+        /// </summary>
         public float Alpha { get; set; }
 
+        /// <summary>
+        /// Initialize the Button.
+        /// </summary>
+        /// <param name="size">The size of the button</param>
+        /// <param name="position">The position of the button</param>
         public Button(Vector2 size, Vector2 position) {
             Size = size;
             Position = position;
@@ -44,6 +85,16 @@ namespace MonoGame.Tools.Components {
             Alpha = 1.0f;
         }
 
+        /// <summary>
+        /// Initialize the Button.
+        /// </summary>
+        /// <param name="size">The size of the button</param>
+        /// <param name="position">The position of the button</param>
+        /// <param name="text">The text of the button</param>
+        /// <param name="textColor">The text color of the button</param>
+        /// <param name="spriteFont">The font used for the button text</param>
+        /// <param name="backgroundColor">The background color of the button</param>
+        /// <param name="border">The border around the button</param>
         public Button(Vector2 size, Vector2 position, string text,
             Color textColor, string spriteFont, Color backgroundColor,
             Border border = null) {
@@ -58,6 +109,11 @@ namespace MonoGame.Tools.Components {
             Alpha = 1.0f;
         }
 
+        /// <summary>
+        /// Load the Button content.
+        /// </summary>
+        /// <param name="content">The ContentManager to load to</param>
+        /// <param name="graphicsDevice">The GraphicsDevice to draw to</param>
         public void LoadContent(ContentManager content,
             GraphicsDevice graphicsDevice) {
             CreateBackground(graphicsDevice);
@@ -68,6 +124,9 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Unload the button content.
+        /// </summary>
         public void UnloadContent() {
             sourceRectangle = Rectangle.Empty;
             borderRectangle = Rectangle.Empty;
@@ -76,9 +135,11 @@ namespace MonoGame.Tools.Components {
             font = null;
         }
 
+        /// <summary>
+        /// Update the Button content.
+        /// </summary>
+        /// <param name="gameTime">The game time TimeSpan</param>
         public void Update(GameTime gameTime) {
-            // todo: adapt OnMouseDown and such for this
-
             Vector2 mouse = InputManager.Instance.GetMousePosition();
             MouseButton[] buttons;
 
@@ -114,6 +175,9 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Handler for the Click event.
+        /// </summary>
         private void OnClick(MouseEventArgs e) {
             MouseEventHandler handler = Click;
             if(handler != null) {
@@ -121,6 +185,9 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Handler for the MouseEnter event.
+        /// </summary>
         private void OnMouseEnter(MouseEventArgs e) {
             MouseEventHandler handler = MouseEnter;
             if(handler != null) {
@@ -128,6 +195,9 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Handler for the MouseLeave event.
+        /// </summary>
         private void OnMouseLeave(MouseEventArgs e) {
             MouseEventHandler handler = MouseLeave;
             if(handler != null) {
@@ -135,6 +205,10 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Draw the Button.
+        /// </summary>
+        /// <param name="spriteBatch">The SpriteBatch to draw to</param>
         public void Draw(SpriteBatch spriteBatch) {
             Vector2 addBorder = Vector2.Zero;
 
@@ -161,6 +235,11 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Check if the specified position is within the button's bounds.
+        /// </summary>
+        /// <param name="position">A position on the screen</param>
+        /// <returns>If the position is in the button bounds</returns>
         private bool IsInBounds(Vector2 position) {
             float posX = position.X - Position.X;
             float posY = position.Y - Position.Y;
@@ -173,6 +252,10 @@ namespace MonoGame.Tools.Components {
             return false;
         }
 
+        /// <summary>
+        /// Create the background texture.
+        /// </summary>
+        /// <param name="graphicsDevice">The GraphicsDevice to draw to</param>
         private void CreateBackground(GraphicsDevice graphicsDevice) {
             Color[] backgroundColor;
 
@@ -192,6 +275,10 @@ namespace MonoGame.Tools.Components {
             background.SetData(backgroundColor);
         }
 
+        /// <summary>
+        /// Create the border texture.
+        /// </summary>
+        /// <param name="graphicsDevice">The GraphicsDevice to draw to</param>
         private void CreateBorder(GraphicsDevice graphicsDevice) {
             if(Border != null) {
                 Color[] borderColor;
@@ -214,6 +301,10 @@ namespace MonoGame.Tools.Components {
             }
         }
 
+        /// <summary>
+        /// Get the position of the text within the button.
+        /// </summary>
+        /// <returns>The position of the text within the button</returns>
         private Vector2 GetTextPosition() {
             Vector2 position = Vector2.Zero;
             Vector2 fontSize = font.MeasureString(Text);
